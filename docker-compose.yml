@@ -1,0 +1,11 @@
+services:
+  ops-service:
+    build:
+      context: .
+      network: host
+    containercurl http://localhost:3000/api/v1/healthcurl http://localhost:3000/api/v1/health_name: ops-service-container
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
