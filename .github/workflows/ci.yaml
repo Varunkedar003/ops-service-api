@@ -36,4 +36,14 @@ jobs:
           echo "SERVICE_NAME=ops-service" >> .env    
 
       - name: Build Docker Image
-        run: docker build -t ops-service:v1 .  
+        run: docker build -t ops-service:v1 .
+
+      - name: Simulated Deployment
+        run: |
+           echo "======================================"
+           echo "Starting simulated deployment..."
+           echo "Docker image built successfully."
+           echo "Deploying application to Kubernetes..."
+           echo "Applying Deployment and Service manifests..."
+           echo "Deployment completed successfully."
+           echo "======================================"    

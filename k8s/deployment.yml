@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ops-service
+  namespace: ops-service
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ops-service
+
+  template:
+    metadata:
+      labels:
+        app: ops-service
+
+    spec:
+      containers:
+        - name: ops-service
+
+          image: ops-service:v1
+
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 3000
+
+          envFrom:
+            - configMapRef:
+                name: ops-service-config
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "256Mi"

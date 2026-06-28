@@ -37,4 +37,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Start the application
-CMD ["node", "--env-file=.env", "dist/src/index.js"]
+CMD ["node", "dist/src/index.js"]

@@ -10,6 +10,8 @@ import processRoute from "./process.js";
 
 import simulate from "./simulate.js"
 
+import metrics from "./metrics.js";
+
 const router = express.Router();
 
 router.get<object, MessageResponse>("/", (req, res) => {
@@ -22,4 +24,5 @@ router.use("/emojis", emojis);
 router.use("/health", health);
 router.use("/process", processRoute)
 router.use("/simulate", simulate)
+router.use("/metrics", metrics);
 export default router;
