@@ -1,0 +1,8 @@
+2026-06-28 12:15:10 INFO Server started on port 3000
+2026-06-28 12:20:14 INFO GET /api/v1/health 200
+2026-06-28 12:24:31 INFO POST /api/v1/process 200
+2026-06-28 12:30:05 ERROR GET /api/v1/process 500
+2026-06-28 12:30:07 ERROR GET /api/v1/process 500
+2026-06-28 12:30:10 ERROR GET /api/v1/process 500
+2026-06-28 12:30:15 WARN Health check failed
+2026-06-28 12:30:18 ERROR Service unavailable

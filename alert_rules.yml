@@ -1,0 +1,14 @@
+groups:
+  - name: ops-service-alerts
+
+    rules:
+      - alert: OpsServiceDown
+        expr: up{job="ops-service"} == 0
+        for: 1m
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "Ops Service Down"
+          description: "The Ops Service has been unreachable for more than 1 minute."
