@@ -30,5 +30,10 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Create .env
+        run: |
+          echo "NODE_ENV=development" > .env
+          echo "SERVICE_NAME=ops-service" >> .env    
+
       - name: Build Docker Image
         run: docker build -t ops-service:v1 .  

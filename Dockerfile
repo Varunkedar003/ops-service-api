@@ -31,7 +31,7 @@ RUN npm ci --omit=dev
 COPY --from=builder /app/dist ./dist
 
 # Copy environment file
-COPY .env ./
+#COPY .env ./
 
 # Application port
 EXPOSE 3000
