@@ -1,6 +1,6 @@
 # Ops Service API - DevOps & AIOps Project
 
-## Project Overview
+# Project Overview
 
 Ops Service API is a Node.js and TypeScript based REST API developed to demonstrate modern DevOps and AIOps practices. The project includes containerization, CI/CD, monitoring, alerting, Kubernetes deployment manifests, and an AI-assisted incident analysis workflow.
 
@@ -35,7 +35,7 @@ Ops Service API is a Node.js and TypeScript based REST API developed to demonstr
 | Orchestration    | Kubernetes (Deployment, Service, ConfigMap, Namespace) |
 | Monitoring       | Prometheus                                             |
 | Visualization    | Grafana                                                |
-| AIOps            | Incident Summary Generator(LLM)                             |
+| AIOps            | Incident Summary Generator (LLM)                       |
 | Testing          | Curl, Load Test Script                                 |
 
 ---
@@ -71,7 +71,7 @@ Developer
 GitHub Repository
     │
     ▼
-GitHub Actions (CI/CD)
+GitHub Actions (CI)
     │
     ▼
 Docker Image
@@ -125,7 +125,7 @@ npm run dev
 
 ---
 
-# Docker
+## Docker
 
 Build the image:
 
@@ -141,7 +141,7 @@ docker run -d -p 3000:3000 --name ops-service-container ops-service:v1
 
 ---
 
-# Docker Compose
+## Docker Compose
 
 ```bash
 docker compose up -d
@@ -152,6 +152,16 @@ This starts:
 * Ops Service
 * Prometheus
 * Grafana
+
+### Access the Services
+
+| Service     | URL                   |
+| ----------- | --------------------- |
+| Application | http://localhost:3000 |
+| Prometheus  | http://localhost:9090 |
+| Grafana     | http://localhost:3001 |
+
+
 
 ---
 
@@ -194,7 +204,7 @@ Metrics include:
 
 Alert Rule:
 
-* OpsServiceDown
+* `OpsServiceDown`
 
 ---
 
@@ -202,12 +212,12 @@ Alert Rule:
 
 The project includes an AI-assisted incident summary workflow.
 
-Input:
+**Input**
 
 * Application logs
 * Health information
 
-Output:
+**Output**
 
 * Incident Summary
 * Root Cause
@@ -217,11 +227,43 @@ Output:
 
 ---
 
+# What I Built vs What I Reused
+
+## Base Starter (w3cj/express-api-starter-ts)
+
+* Express.js + TypeScript project scaffold
+* ESLint configuration and development scripts
+* Basic middleware setup
+
+## Built by Me (DevOps & AIOps Work)
+
+* `/health`, `/process`, `/simulate`, `/metrics` API endpoints
+* Multi-stage Dockerfile and `docker-compose.yml`
+* GitHub Actions CI/CD workflow (`.github/workflows/`)
+* Kubernetes manifests (`k8s/` — Namespace, Deployment, Service, ConfigMap)
+* Prometheus configuration (`prometheus.yml`, `alert_rules.yml`)
+* Grafana dashboard (`grafana/`)
+* AIOps incident summarizer (`aiops/summarize.js`)
+* Load testing script (`scripts/`)
+* Root Cause Analysis template (`templates/`)
+
+---
+
 # Optional Enhancements
 
 * Grafana dashboard export
 * Load testing script
 * Root Cause Analysis document
+
+---
+
+# Production Consideration
+
+* **AIOps component:** The incident summary is generated using a simulated/mock LLM workflow. In production, this would integrate with a real LLM API (such as OpenAI or Anthropic). The current implementation demonstrates the expected workflow and output structure.
+* **No database persistence:** The service is stateless and intended for demonstration purposes.
+* **Single alert rule:** Only the `OpsServiceDown` alert is configured. Additional production alerts (such as high latency, high error rate, and resource utilization) can be added.
+* **Kubernetes not deployed to a live cluster:** The manifests were created and validated locally but were not deployed to a managed Kubernetes cluster (Amazon EKS, Azure AKS, or Google GKE).
+
 
 ---
 
@@ -235,9 +277,9 @@ The repository includes screenshots demonstrating:
 * Prometheus targets
 * Grafana dashboard
 * Alert rules
-* Load Tests
+* Load testing
 * AIOps incident summary
-  
+
 ---
 
 # Future Improvements
